@@ -3,7 +3,8 @@ defmodule Flagsmith.Engine do
     Environment,
     Traits,
     Segments,
-    Identity
+    Identity,
+    Features
   }
 
   alias Traits.Trait
@@ -96,12 +97,30 @@ defmodule Flagsmith.Engine do
     |> Enum.find(fn %{feature: %{name: f_name}} -> f_name == name end)
   end
 
+  @doc """
+  Filters a list of segments accordingly to if they match an identity and traits
+  (optionally using a list of traits to override those in the identity)
+  """
+  @spec get_segment_features(
+          segments :: list(Segments.Segment.t()),
+          Identity.t(),
+          override_traits :: list(Traits.Trait.t())
+        ) :: list(Segments.Segment.t())
   def get_segment_features(segments, identity, override_traits) do
     Enum.filter(segments, fn segment ->
       evaluate_identity_in_segment(identity, segment, override_traits)
     end)
   end
 
+  @doc """
+  Returns a list of `Environment.FeatureState.t()` where any that has the same name
+  as in the segments provided is replaced by the feature state there specified (if
+  any).
+  """
+  @spec replace_segment_features(
+          original :: list(Environment.FeatureState.t()),
+          to_replace :: list(Segments.Segment.t())
+        ) :: list(Environment.FeatureState.t())
   def replace_segment_features(original, to_replace) do
     Enum.reduce(to_replace, original, fn %{name: replacement_name, feature_states: segment_fs},
                                          acc ->
