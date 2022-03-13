@@ -16,7 +16,7 @@ defmodule Flagsmith.Configuration do
   defstruct [
     :environment_key,
     api_url: @default_url,
-    default_flag_handler: fn _ -> :not_found end,
+    default_flag_handler: &Schemas.Features.FeatureState.from_response/1,
     custom_headers: [],
     request_timeout_milliseconds: 5000,
     enable_local_evaluation: false,
