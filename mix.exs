@@ -24,12 +24,7 @@ defmodule FlagsmithEngine.MixProject do
           "github/readme" => "https://github.com/Flagsmith/flagsmith-elixir-flag-engine"
         },
         nest_modules_by_prefix: [
-          Flagsmith.Schemas,
-          Flagsmith.Schemas.Environment,
-          Flagsmith.Schemas.Features,
-          Flagsmith.Schemas.Segments,
-          Flagsmith.Schemas.Traits,
-          Flagsmith.Schemas.Types
+          Flagsmith.Schemas
         ]
       ]
     ]

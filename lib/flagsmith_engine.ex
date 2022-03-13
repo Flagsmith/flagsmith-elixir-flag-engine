@@ -1,6 +1,4 @@
 defmodule Flagsmith.Engine do
-  @moduledoc false
-
   alias Flagsmith.Schemas.{
     Environment,
     Traits,
@@ -13,9 +11,7 @@ defmodule Flagsmith.Engine do
   alias Flagsmith.Schemas.Types
   @condition_operators Flagsmith.Schemas.Types.Operator.values(:atoms)
 
-  @moduledoc """
-  Documentation for `Flagsmith.Engine`.
-  """
+  @moduledoc false
 
   @doc """
   Generate a valid environment struct from a json string or map.
