@@ -4,7 +4,7 @@ defmodule FlagsmithEngine.MixProject do
   def project do
     [
       app: :flagsmith_engine,
-      version: "0.1.1",
+      version: "0.1.2",
       elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -22,7 +22,15 @@ defmodule FlagsmithEngine.MixProject do
         licenses: ["MIT"],
         links: %{
           "github/readme" => "https://github.com/Flagsmith/flagsmith-elixir-flag-engine"
-        }
+        },
+        nest_modules_by_prefix: [
+          Flagsmith.Schemas,
+          Flagsmith.Schemas.Environment,
+          Flagsmith.Schemas.Features,
+          Flagsmith.Schemas.Segments,
+          Flagsmith.Schemas.Traits,
+          Flagsmith.Schemas.Types
+        ]
       ]
     ]
   end

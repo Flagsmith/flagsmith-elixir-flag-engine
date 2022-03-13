@@ -1,4 +1,6 @@
 defmodule Flagsmith.Engine do
+  @moduledoc false
+
   alias Flagsmith.Schemas.{
     Environment,
     Traits,
