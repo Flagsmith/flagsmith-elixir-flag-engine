@@ -4,7 +4,7 @@ defmodule FlagsmithEngine.MixProject do
   def project do
     [
       app: :flagsmith_engine,
-      version: "0.1.4",
+      version: "0.1.5",
       elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -15,7 +15,6 @@ defmodule FlagsmithEngine.MixProject do
         main: "Flagsmith.Client",
         extras: ["README.md"],
         nest_modules_by_prefix: [
-          Flagsmith.Schemas,
           Flagsmith.Schemas.Environment,
           Flagsmith.Schemas.Features,
           Flagsmith.Schemas.Segments,
